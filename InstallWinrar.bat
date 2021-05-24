@@ -20,10 +20,10 @@ IF [%param%]==[] (COLOR A &&ECHO there is no parameters... going to menu &&TIMEO
 IF [%param%]==[S] (GOTO procInstallSpanishVersion)
 IF [%param%]==[E] (GOTO procInstallEnglishVersion)
 
-REM CLEARING THE SCREEN
+REM CLEANING THE SCREEN
 CLS
 
-REM CONSTANTS delclaring variable for space control, AND for embellish text
+REM CONSTANTS declaring variable for space control, AND for embellish text
 SET spc=                
 SET embellishInit=-----_
 SET embellishFinal=_-----
