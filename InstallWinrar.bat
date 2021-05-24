@@ -1,5 +1,25 @@
 @ECHO OFF
 TITLE WinrarInstallator
+REM ----------------------------------------------------------------------------
+REM |                                                                          |
+REM |                                                                          |
+REM |                 THIS PROGRAM IS A PART OF WINRARPASSCRACK SUITE          |
+REM |                 AUTHOR: AUTHOR                                           |
+REM |                 GITHUB:                                                  |
+REM |                 THIS PROGRAM WAS CREATED FOR MAKE THE WINRAR INSTALLATION|
+REM |                 WHICH IS REQUIRED TO MAKE THE BRUTE FORCE ATTACK         |
+REM |                                                                          |
+REM |                                                                          |
+REM |                                                                          |
+REM |                                                                          |                                                            
+REM ----------------------------------------------------------------------------
+
+REM VALIDATING IF ANY ARGUMENT WAS PASSED AS PARAMETER, and redirecting to proccess
+SET param=%1
+IF [%param%]==[] (COLOR A &&ECHO there is no parameters... going to menu &&TIMEOUT /T 4 >NUL)
+IF [%param%]==[S] (GOTO procInstallSpanishVersion)
+IF [%param%]==[E] (GOTO procInstallEnglishVersion)
+
 REM CLEARING THE SCREEN
 CLS
 
@@ -41,23 +61,28 @@ ECHO %spc%%embellishInit%TYPE 1 OR 2, DON'T TYPE ANY OTHER VALUE OR CHARACTER!!!
 ECHO.
 ECHO.
 ECHO PRESS ANY KEY TO REDIRECT TO MENU
-PAUSE>nul
+PAUSE>NUL
 GOTO MAIN_SELECTION
 
 
 REM PROCCESS make the spanish version installation
 :procInstallSpanishVersion
 COLOR 3
-ECHO spanish ver installation
-
-pause
+ECHO.
+ECHO.
+ECHO %spc%%embellishInit%MAKING THE SPANISH VERSION INSTALLATION (YOU WILL SEE THE PROGRAM WIZARD)%embellishFinal%
+TIMEOUT /T 4 >NUL
+CALL winrar-x64-601es.exe
 GOTO EOF
 
 REM PROCCESS make the english version installation
 :procInstallEnglishVersion
-COLOR 3 
-ECHO english version installation
-pause
+COLOR 3
+ECHO.
+ECHO. 
+ECHO %spc%%embellishInit%MAKING THE ENGLISH VERSION INSTALLATION (YOU WILL SEE THE PROGRAM WIZARD)%embellishFinal%
+TIMEOUT /T 4 >NUL
+CALL winrar-x64-601en.exe
 GOTO EOF
 
 REM the end of file
