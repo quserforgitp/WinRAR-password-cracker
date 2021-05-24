@@ -90,3 +90,4 @@ REM the end of file
 
 REM this pause has been setted in order to control the program flow until finalized
 PAUSE
+EXIT /B 0
