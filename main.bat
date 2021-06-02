@@ -35,7 +35,11 @@ IF %ERRORLEVEL% EQU 2 (CALL InstallWinrar.bat S)
 
 
 :EOF
+REM SETTING the default config such as color and clearing the screen
+COLOR
+CLS
 ECHO EOF
+COLOR 
 
 REM este pause es para controlar el flujo del programa mientras se termina de codificar por completo 
 pause
