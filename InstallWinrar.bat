@@ -16,7 +16,7 @@ REM ----------------------------------------------------------------------------
 
 REM VALIDATING IF ANY ARGUMENT WAS PASSED AS PARAMETER, and redirecting to proccess
 SET param=%1
-IF [%param%]==[] (COLOR A &&ECHO there is no parameters... going to menu &&TIMEOUT /T 4 >NUL)
+IF [%param%]==[] (COLOR A &&ECHO there are no parameters... going to menu &&TIMEOUT /T 4 >NUL)
 IF [%param%]==[S] (GOTO procInstallSpanishVersion)
 IF [%param%]==[E] (GOTO procInstallEnglishVersion)
 
@@ -73,7 +73,7 @@ ECHO.
 ECHO %spc%%embellishInit%MAKING THE SPANISH VERSION INSTALLATION (YOU WILL SEE THE PROGRAM WIZARD)%embellishFinal%
 TIMEOUT /T 4 >NUL
 CALL winrar-x64-601es.exe
-GOTO EOF
+GOTO callprocwinRaractivatorlink
 
 REM PROCCESS make the english version installation
 :procInstallEnglishVersion
@@ -83,11 +83,20 @@ ECHO.
 ECHO %spc%%embellishInit%MAKING THE ENGLISH VERSION INSTALLATION (YOU WILL SEE THE PROGRAM WIZARD)%embellishFinal%
 TIMEOUT /T 4 >NUL
 CALL winrar-x64-601en.exe
+GOTO :callprocwinRaractivatorlink
+
+REM prompting to user if he wants to activate winrar 
+:callprocwinRaractivatorlink
+CHOICE /C YN /N /T 10 /D N /M "I KNOW, I SHOULDN'T QUESTION THIS TO YOU BUT... YOU WANT ME TO ACTIVATE WINRAR PERMANENTLY? (N/y)-->"
+IF %ERRORLEVEL% EQU 1 (CALL winRarActivatorlink.lnk) ELSE (GOTO :noSelected)
+
+:noSelected
+ECHO OK GOOD CHOICE... SEE YA ^!!!!!!
+TIMEOUT /T 4 >NUL
 GOTO EOF
 
 REM the end of file
 :EOF
-
-REM this pause has been setted in order to control the program flow until finalized
 PAUSE
+CLS
 EXIT /B 0

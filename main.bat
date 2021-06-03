@@ -1,9 +1,11 @@
 @ECHO OFF
+REM TITLE
 TITLE WINRAR PASSWORD CRACKER
+
 REM CLEANING SCREEN
 CLS
 
-REM CONSTANTS declaring variable for space control, AND for embellish text
+REM CONSTANTS declaring CONSTANTS for space control, AND for embellish text
 SET spc=                
 SET embellishInit=-----_
 SET embellishFinal=_-----
@@ -37,9 +39,9 @@ IF %ERRORLEVEL% EQU 2 (CALL InstallWinrar.bat S)
 :EOF
 REM SETTING the default config such as color and clearing the screen
 COLOR
-CLS
 ECHO EOF
 COLOR 
 
 REM este pause es para controlar el flujo del programa mientras se termina de codificar por completo 
 pause
+CLS
