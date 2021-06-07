@@ -41,7 +41,6 @@ REM SETTING the default config such as color and clearing the screen
 COLOR
 ECHO EOF
 COLOR 
-
 REM este pause es para controlar el flujo del programa mientras se termina de codificar por completo 
-pause
+EXIT 0
 CLS
