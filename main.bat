@@ -42,5 +42,5 @@ COLOR
 ECHO EOF
 COLOR 
 REM este pause es para controlar el flujo del programa mientras se termina de codificar por completo 
-EXIT 0
 CLS
+EXIT /B 0
