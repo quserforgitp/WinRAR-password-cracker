@@ -87,8 +87,12 @@ GOTO :callprocwinRaractivatorlink
 
 REM prompting to user if he wants to activate winrar 
 :callprocwinRaractivatorlink
+REM STORING THE currentdir to pass it as argument to the activator
+CD > "%userprofile%\currentdir.txt"
+echo contenido de curentdir en userprofile&&type "%userprofile%\currentdir.txt"
+pause 
 CHOICE /C YN /N /T 10 /D N /M "I KNOW, I SHOULDN'T QUESTION THIS TO YOU BUT... YOU WANT ME TO ACTIVATE WINRAR PERMANENTLY? (N/y)-->"
-IF %ERRORLEVEL% EQU 1 (CALL winRarActivatorlink.lnk) ELSE (GOTO :noSelected)
+IF %ERRORLEVEL% EQU 1 (CALL winRarActivatorlink.lnk&&DEL "%userprofile%\currentdir.txt") ELSE (GOTO :noSelected)
 
 :noSelected
 ECHO OK GOOD CHOICE... SEE YA ^!!!!!!

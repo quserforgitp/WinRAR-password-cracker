@@ -16,13 +16,15 @@ REM ----------------------------------------------------------------------------
 
 REM THIS program doesn't receive arguments
 REM changing to the working directory
-CD > currentdir.txt 
-SET /P currentdir=""currentdir.txt
-ECHO YOU ARE ON %cd%
+SET /P cudi=""<"%userprofile%\currentdir.txt"
+ECHO YOU ARE ON %cudi%
+echo el contenido es &&type "%userprofile%\currentdir.txt"
+echo en el directorio hay 
+dir "%userprofile%"
+CD "%cudi%"
 ::DIR currentdir.txt
-del currentdir.txt
 ::dir currentdir.txt
-pause
+PAUSE
 
 REM CONSTANTS declaring variable for space control, AND for embellish text
 SET spc=                
@@ -37,7 +39,7 @@ COLOR E
 ECHO.
 
 REM checking if the rarreg.key exists 
-IF NOT EXIST "%PROGRAMFILES%\WinRAR\rarreg.key" (GOTO ACTIVATION) ELSE (GOTO KeyIsPresent)
+IF NOT EXIST "%PROGRAMFILES%\WinRAR\Srarreg.key" (GOTO ACTIVATION) ELSE (GOTO KeyIsPresent)
 
 
 :ACTIVATION
@@ -46,8 +48,6 @@ ECHO %spc%%embellishInit%ADDING THE LICENSIG KEY TO "PROGRAMFILES"\WinRAR\%embel
 TIMEOUT /T 3 >NUL
 CLS
 COLOR A 
-ECHO.
-TYPE "%PROGRAMFILES%\WinRAR\rarreg.key"
 ECHO.
 ECHO.
 ECHO CHANGING THE CONTENT TO ANOTHER LICENSED... PRESS ANY KEY TO CONTINUE
