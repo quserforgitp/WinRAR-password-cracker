@@ -16,8 +16,12 @@ REM ----------------------------------------------------------------------------
 
 REM THIS program doesn't receive arguments
 REM changing to the working directory
-CD "C:\Users\IBM ThinkPad X230\Desktop\winrarcracker"
-CD
+CD > currentdir.txt 
+SET /P currentdir=""currentdir.txt
+ECHO YOU ARE ON %cd%
+::DIR currentdir.txt
+del currentdir.txt
+::dir currentdir.txt
 pause
 
 REM CONSTANTS declaring variable for space control, AND for embellish text
@@ -31,12 +35,17 @@ CLS
 REM THIS program logic
 COLOR E
 ECHO.
+
+REM checking if the rarreg.key exists 
+IF NOT EXIST "%PROGRAMFILES%\WinRAR\rarreg.key" (GOTO ACTIVATION) ELSE (GOTO KeyIsPresent)
+
+
+:ACTIVATION
 REM showing the rarreg.key content
-ECHO %spc%%embellishInit%CHEKING THE RARREG.KEY FILE'S CONTENT%embellishFinal%
+ECHO %spc%%embellishInit%ADDING THE LICENSIG KEY TO "PROGRAMFILES"\WinRAR\%embellishFinal%
 TIMEOUT /T 3 >NUL
 CLS
 COLOR A 
-ECHO THIS IS THE CURRENT FILE'S CONTENT.
 ECHO.
 TYPE "%PROGRAMFILES%\WinRAR\rarreg.key"
 ECHO.
@@ -79,6 +88,13 @@ COLOR C
 ECHO %spo%%embellishInit%THE ACCESS TO THE PATH WAS DENIED TRY TO EXECUTE THIS AS ADMIN%embellishFinal%
 ECHO PRESS ANY KEY TO CONTINUE...
 PAUSE>NUL
+GOTO EOF
+
+:KeyIsPresent
+ECHO THE KEY IS ALREADY PRESENT
+TIMEOUT /T 5 >NUL
+
 :EOF
 COLOR 
+cls
 EXIT /B 0

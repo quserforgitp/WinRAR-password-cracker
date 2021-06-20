@@ -11,7 +11,7 @@ SET embellishInit=-----_
 SET embellishFinal=_-----
 
 REM BEGIN comprobing if winrar is installed
-IF EXIST "%ProgramFiles%\WinRAR\WinRARs.exe" (GOTO procInitializeBFA) ELSE (GOTO prociPromptingToMakeInstallation)
+IF EXIST "%ProgramFiles%\WinRAR\WinRAR.exe" (GOTO procInitializeBFA) ELSE (GOTO prociPromptingToMakeInstallation)
 
 :prociPromptingToMakeInstallation
 CLS
@@ -33,7 +33,13 @@ REM CONDITIONAL checking the language to pass arguments to InstallWinrar.bat
 IF %ERRORLEVEL% EQU 1 (CALL InstallWinrar.bat E)
 IF %ERRORLEVEL% EQU 2 (CALL InstallWinrar.bat S)
 
+REM ASKING IF THE USER WANTS TO MAKE THE ATTATCK OR NOT
+CHOICE /C YN /N /T 10 /D Y /M "DO YOU WANT TO CONTINUE WITH THE BFA ATTACK??? (Y/n) --->"
+REM CONDITIONAL cheking the answar to determine if procInitializeBFA is called or not
+IF %ERRORLEVEL% EQU 1 (GOTO procInitializeBFA) else (goto EOF)
+
 :procInitializeBFA
+CALL cracker.bat
 
 
 :EOF
