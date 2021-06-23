@@ -1,66 +1,42 @@
 @ECHO OFF
-REM ----------------------------------------------------------------------------
-REM |                                                                          |
-REM |                                                                          |
-REM |                 THIS PROGRAM IS A PART OF WINRARPASSCRACK SUITE          |
-REM |                 AUTHOR: AutHOr                                           |
-REM |                 GITHUB: https://github.com/quserforgitp                  |
-REM |                 THIS PROGRAM WAS CREATED FOR MAKE THE BFA TO A WINRAR    |
-REM |                                                                          |
-REM |                                                                          |
-REM |                                                                          |
-REM |                                                                          |
-REM |                                                                          |                                                            
-REM ----------------------------------------------------------------------------
 
-REM CONSTANTS declaring CONSTANTS for space control, AND for embellish text
-SET spc=                
-SET embellishInit=-----_
-SET embellishFinal=_-----
-SET FLG=[92m
-SET FDG=[32m
-SET FDB=[34m
-SET FDY=[33m
+SETLOCAL ENABLEDELAYEDEXPANSION
+
+SET RFILE=%1
+
+FOR /F %%a IN (diccionario) DO (
+SET PASS=%%a
+UNRAR E -inul -p!PASS!  "palrar.rar" "%temp%" 
+IF !ERRORLEVEL! EQU 0 (GOTO FOUND) ELSE (ECHO !PASS! descarted^^!) 
+)
+
+REM CASE IS THE KEY WASN'T FOUND 
+:NOTFOUND
+TIMEOUT /T 2 >NUL
+ECHO [91mSORRY, THE PASSWORD WASN'T DISCOVERED[0m
+CALL cscript voiceunsuccess.vbs //B 
+GOTO EOF
 
 
-TITLE %spc%%embellishInit%BFA ATTACKER (THE REAL CRACKER)%embellishFinal%
+REM CASE IF THE KEY WAS FOND
+:FOUND
+SET /A checker=!checker!+1 & IF !checker! EQU 1 (CALL cscript voicesuccess.vbs //B) 
+ECHO 
+ECHO [0mTHE PASSWORD IS [32m!PASS![0m^^!^^!^^!
+@ECHO [93m
+CHOICE /C OC /N /T 3 /D C  /M "PRESS O KEY TO DISMISS THE ALARM (C/o)-->"
+IF %ERRORLEVEL% NEQ 1 (GOTO FOUND)
+TIMEOUT /T 1 > nul
 CLS
+ECHO [33mCOPYING PASSWORD TO CLIPBOARD...
+TIMEOUT /T 3 > NUL
+ECHO !PASS! | CLIP
+REM obteninendo nombres de archivos para borrarlos despues
+unrar lb -p!PASS! palrar.rar> "%temp%\list.s"
+FOR /F "tokens=* delims=" %%c IN (%temp%\list.s) DO (SET flist=%%c&&DEL /Q "%temp%\!flist!") 
+DEL /Q "%temp%\list.s"
 
-REM INITIALIZING CRACKING PROCESS 
-
-ECHO %FDY%%spc%%embellishInit%WHICH WILL BE THE FIRST DICTIONARY?%embellishFinal%
-ECHO.
-ECHO.
-ECHO.
-ECHO %FLG%^|   TYPE   ^|%spc%^|  VERSION     ^|%spc%^| (DAYS:HOURS:MIN:SEC) ^|
-ECHO %FLG%^|S)SPANISH ^|%spc%^|   1.0        ^|%spc%^|    00:   00: 20: 30  ^|
-ECHO %FLG%^|E)ENGLISH ^|%spc%^|   1.0        ^|%spc%^|    00:   00: 15: 30  ^|
-ECHO %FLG%^|A)  ALL   ^|%spc%^| NO AVAILABLE ^|%spc%^|    00:   03: 30: 00  ^|
-ECHO %FDB%
-ECHO.
-ECHO.
-
-CHOICE /C SEA /N /T 20 /D S /M " SELECT THE DICTIONARY (S/e/a)? S = SPANISH ; E =  ENGLISH ; A = ALL -->"
-TIMEOUT /T 2 > NUL
-CLS
-IF %ERRORLEVEL% EQU 1 (GOTO SPANISH)
-IF %ERRORLEVEL% EQU 2 (GOTO ENGLISH)
-IF %ERRORLEVEL% EQU 3 (GOTO ALL)
-
-
-
-:SPANISH
-ECHO SPANISH
-GOTO EOF
-
-:ENGLISH
-ECHO ENGLISH
-GOTO EOF
-
-:ALL
-ECHO ALL
-GOTO EOF
 
 :EOF
-COLOR 
+ENDLOCAL
 EXIT /B 0

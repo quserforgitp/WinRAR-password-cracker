@@ -22,9 +22,8 @@ echo el contenido es &&type "%userprofile%\currentdir.txt"
 echo en el directorio hay 
 dir "%userprofile%"
 CD "%cudi%"
-::DIR currentdir.txt
-::dir currentdir.txt
-PAUSE
+ECHO PRESS ANY KEY TO CONTINUE...
+PAUSE>NUL
 
 REM CONSTANTS declaring variable for space control, AND for embellish text
 SET spc=                

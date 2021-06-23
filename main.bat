@@ -39,7 +39,7 @@ REM CONDITIONAL cheking the answar to determine if procInitializeBFA is called o
 IF %ERRORLEVEL% EQU 1 (GOTO procInitializeBFA) else (goto EOF)
 
 :procInitializeBFA
-CALL cracker.bat
+CALL selectDictionaries.bat
 
 
 :EOF
