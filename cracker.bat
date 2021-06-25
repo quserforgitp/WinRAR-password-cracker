@@ -3,10 +3,11 @@
 SETLOCAL ENABLEDELAYEDEXPANSION
 
 SET RFILE=%1
+SET DICTO=%2
 
-FOR /F %%a IN (diccionario) DO (
+FOR /F %%a IN (!DICTO!) DO (
 SET PASS=%%a
-UNRAR E -inul -p!PASS!  "palrar.rar" "%temp%" 
+UNRAR E -inul -p!PASS!  "!RFILE!" "%temp%" 
 IF !ERRORLEVEL! EQU 0 (GOTO FOUND) ELSE (ECHO !PASS! descarted^^!) 
 )
 
