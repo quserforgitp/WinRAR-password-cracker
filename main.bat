@@ -46,7 +46,7 @@ GOTO EOF
 REM PROGRESS BAR
 CLS
 setlocal enabledelayedexpansion
-
+CHCP 65001 >NUL
 FOR /F "tokens=1 delims=#" %%a IN ('"PROMPT #$H# & ECHO ON & FOR %%b IN (1) DO REM"') DO (
   SET "BS=%%a"
 )
