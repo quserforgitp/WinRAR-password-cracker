@@ -11,7 +11,7 @@ SET embellishInit=-----_
 SET embellishFinal=_-----
 
 REM BEGIN comprobing if winrar is installed
-IF EXIST "%ProgramFiles%\WinRAR\WinRARs.exe" (GOTO procInitializeBFA) ELSE (GOTO prociPromptingToMakeInstallation)
+IF EXIST "%ProgramFiles%\WinRAR\WinRAR.exe" (GOTO procInitializeBFA) ELSE (GOTO prociPromptingToMakeInstallation)
 
 :prociPromptingToMakeInstallation
 CLS
@@ -60,7 +60,7 @@ SET CB=[91m][0m
 SET SPC1=[104m          [0m
 SET STRING=%CA%!CHAR!%SPC1%!B!
 ECHO [33mTHIS MAY TAKE A WHILE, PLEASE WAIT[0m!STRING!!CB!
-FOR /L %%A IN (1,1,12345) DO (@ECHO OFF)
+FOR /L %%A IN (1,1,5000) DO (@ECHO OFF)
 GOTO neverDone
 
 
