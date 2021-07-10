@@ -11,9 +11,8 @@ PAUSE> NUL
 
 FOR /F %%a IN (!DICTO!) DO (
 SET PASS=%%a
-UNRAR E  -p!PASS!  !RFILE! "%temp%" 
-ECHO !ERRORLEVEL!
-PAUSE
+UNRAR E -inul -p!PASS!  !RFILE! "%temp%" 
+echo !errorlevel!
 IF !ERRORLEVEL! EQU 0 (GOTO FOUND) ELSE (ECHO !PASS! descarted^^!) 
 )
 
@@ -41,11 +40,10 @@ ECHO [33mCOPYING PASSWORD TO CLIPBOARD...
 TIMEOUT /T 3 > NUL
 ECHO !PASS! | CLIP
 REM obteninendo nombres de archivos para borrarlos despues
-unrar lb -p!PASS! palrar.rar> "%temp%\list.s"
+unrar lb -p!PASS! %RFILE%> "%temp%\list.s"
 FOR /F "tokens=* delims=" %%c IN (%temp%\list.s) DO (SET flist=%%c&&DEL /Q "%temp%\!flist!") 
 DEL /Q "%temp%\list.s"
-
-
+pause
 :EOF
 ENDLOCAL
 EXIT /B 0
