@@ -1,3 +1,4 @@
+REM CALLED FROM [InstallWinrar.bat] ARGS [] LINE [96]
 @ECHO OFF
 TITLE WinrarActivator
 REM ----------------------------------------------------------------------------
@@ -38,7 +39,7 @@ COLOR E
 ECHO.
 
 REM checking if the rarreg.key exists 
-IF NOT EXIST "%PROGRAMFILES%\WinRAR\Srarreg.key" (GOTO ACTIVATION) ELSE (GOTO KeyIsPresent)
+IF NOT EXIST "%PROGRAMFILES%\WinRAR\rarreg.key" (GOTO ACTIVATION) ELSE (GOTO KeyIsPresent)
 
 
 :ACTIVATION

@@ -1,3 +1,5 @@
+' REM CALLED FROM [cracker.bat BY cscript //B] ARGS [] LINE [25]
+
 Dim speaks, speech, speaks2, speaks3
 speaks="HE TERMINADO EL TRABAJO. LA CLAVE FUE ENCONTRADA"
 speaks2=".INICIANDO LA SECUENCIA DE SONIDOS HASTA QUE SE RECIBA LA LETRA, 'O'"

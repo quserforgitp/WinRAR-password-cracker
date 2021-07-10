@@ -32,6 +32,7 @@ CHOICE /C ES /N /T 10 /D E /M " WHICH LANGUAGE DO YOU PREFER ON WINRAR (E/s)? S 
 REM CONDITIONAL checking the language to pass arguments to InstallWinrar.bat
 IF %ERRORLEVEL% EQU 1 (CALL InstallWinrar.bat E)
 IF %ERRORLEVEL% EQU 2 (CALL InstallWinrar.bat S)
+REM CONTINUE FROM [InstallWinrar.bat] LINE [107 -> EOF]
 
 REM ASKING IF THE USER WANTS TO MAKE THE ATTATCK OR NOT
 CHOICE /C YN /N /T 10 /D Y /M "DO YOU WANT TO CONTINUE WITH THE BFA ATTACK??? (Y/n) --->"
@@ -40,6 +41,7 @@ IF %ERRORLEVEL% EQU 1 (GOTO procInitializeBFA) ELSE (GOTO EOF)
 
 :procInitializeBFA
 CALL selectDictionaries
+REM CONTINUE FROM [selectDictionaries.bat] ARGS [] LINE [78 -> EOF]
 GOTO EOF
 
 :neverDone

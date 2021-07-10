@@ -1,3 +1,4 @@
+REM CALLED FROM [main.bat] ARGS [] LINE [42]
 @ECHO OFF
 REM ----------------------------------------------------------------------------
 REM |                                                                          |
@@ -59,14 +60,17 @@ IF %ERRORLEVEL% EQU 3 (GOTO ALL)
 
 :SPANISH
 CALL cracker %RFILE% SPDICTO
+REM CONTINUE FROM [cracker.bat] LINE [43 -> EOF]
 GOTO EOF
 
 :ENGLISH
 CALL cracker %RFILE% ENDICTO
+REM CONTINUE FROM [cracker.bat] LINE [43 -> EOF]
 GOTO EOF
 
 :ALL
 CALL cracker %RFILE% ALLDICTO
+REM CONTINUE FROM [cracker.bat] LINE [43 -> EOF]
 GOTO EOF
 
 :EOF
