@@ -12,7 +12,7 @@ PAUSE> NUL
 FOR /F %%a IN (!DICTO!) DO (
 SET PASS=%%a
 UNRAR E -inul -p!PASS!  !RFILE! "%temp%" 
-echo !errorlevel!
+
 IF !ERRORLEVEL! EQU 0 (GOTO FOUND) ELSE (ECHO !PASS! descarted^^!) 
 )
 
@@ -43,7 +43,7 @@ REM obteninendo nombres de archivos para borrarlos despues
 unrar lb -p!PASS! %RFILE%> "%temp%\list.s"
 FOR /F "tokens=* delims=" %%c IN (%temp%\list.s) DO (SET flist=%%c&&DEL /Q "%temp%\!flist!") 
 DEL /Q "%temp%\list.s"
-pause
+
 :EOF
 ENDLOCAL
 EXIT /B 0
